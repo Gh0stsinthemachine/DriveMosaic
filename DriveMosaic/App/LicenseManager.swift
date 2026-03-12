@@ -48,7 +48,7 @@ final class LicenseManager {
         UserDefaults.standard.string(forKey: Self.keyLicenseKey) ?? ""
     }
 
-    /// Activate a license key. Tries LemonSqueezy API first, falls back to offline validation.
+    /// Activate a license key via LemonSqueezy API.
     func activate(key: String) async {
         let trimmed = key.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else {
@@ -57,13 +57,6 @@ final class LicenseManager {
         }
 
         validationState = .validating
-
-        // MVP offline bypass: accept keys with DMPRO- prefix for testing
-        // Remove this block once LemonSqueezy product is live
-        if trimmed.hasPrefix("DMPRO-") && trimmed.count > 6 {
-            storeValidation(key: trimmed)
-            return
-        }
 
         // Try LemonSqueezy API
         do {
