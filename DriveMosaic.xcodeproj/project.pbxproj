@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4B0001000000000000000001 /* DriveMosaicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000001 /* DriveMosaicApp.swift */; };
+		4B0001000000000000000002 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000002 /* AppState.swift */; };
+		4B0001000000000000000003 /* FileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000003 /* FileNode.swift */; };
+		4B0001000000000000000004 /* ScanEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000004 /* ScanEvent.swift */; };
+		4B0001000000000000000005 /* FileScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000005 /* FileScanner.swift */; };
+		4B0001000000000000000006 /* ScanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000006 /* ScanCoordinator.swift */; };
+		4B0001000000000000000007 /* ByteFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000007 /* ByteFormatter.swift */; };
+		4B0001000000000000000008 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000008 /* ContentView.swift */; };
+		4B0001000000000000000009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000009 /* Assets.xcassets */; };
+		4B000100000000000000000A /* ArcDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A000100000000000000000C /* ArcDescriptor.swift */; };
+		4B000100000000000000000B /* ColorAssigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A000100000000000000000D /* ColorAssigner.swift */; };
+		4B000100000000000000000C /* SunburstLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A000100000000000000000E /* SunburstLayout.swift */; };
+		4B000100000000000000000D /* SunburstCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A000100000000000000000F /* SunburstCanvasView.swift */; };
+		4B000100000000000000000E /* SunburstHitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000010 /* SunburstHitTesting.swift */; };
+		4B000100000000000000000F /* PolarMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000011 /* PolarMath.swift */; };
+		4B0001000000000000000010 /* VolumeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000012 /* VolumeDetector.swift */; };
+		4B0001000000000000000011 /* FullDiskAccessChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000013 /* FullDiskAccessChecker.swift */; };
+		4B0001000000000000000012 /* CollectorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000014 /* CollectorItem.swift */; };
+		4B0001000000000000000013 /* DiskSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000015 /* DiskSelectorView.swift */; };
+		4B0001000000000000000014 /* CollectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000016 /* CollectorView.swift */; };
+		4B0001000000000000000015 /* TreemapLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000017 /* TreemapLayout.swift */; };
+		4B0001000000000000000016 /* TreemapCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000018 /* TreemapCanvasView.swift */; };
+		4B0001000000000000000017 /* LicenseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000019 /* LicenseManager.swift */; };
+		4B0001000000000000000018 /* ProUpgradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A000100000000000000001A /* ProUpgradeView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4A0001000000000000000001 /* DriveMosaicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveMosaicApp.swift; sourceTree = "<group>"; };
+		4A0001000000000000000002 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		4A0001000000000000000003 /* FileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNode.swift; sourceTree = "<group>"; };
+		4A0001000000000000000004 /* ScanEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanEvent.swift; sourceTree = "<group>"; };
+		4A0001000000000000000005 /* FileScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileScanner.swift; sourceTree = "<group>"; };
+		4A0001000000000000000006 /* ScanCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCoordinator.swift; sourceTree = "<group>"; };
+		4A0001000000000000000007 /* ByteFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByteFormatter.swift; sourceTree = "<group>"; };
+		4A0001000000000000000008 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4A0001000000000000000009 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4A000100000000000000000A /* DriveMosaic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DriveMosaic.entitlements; sourceTree = "<group>"; };
+		4A000100000000000000000B /* DriveMosaic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DriveMosaic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A000100000000000000000C /* ArcDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcDescriptor.swift; sourceTree = "<group>"; };
+		4A000100000000000000000D /* ColorAssigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAssigner.swift; sourceTree = "<group>"; };
+		4A000100000000000000000E /* SunburstLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunburstLayout.swift; sourceTree = "<group>"; };
+		4A000100000000000000000F /* SunburstCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunburstCanvasView.swift; sourceTree = "<group>"; };
+		4A0001000000000000000010 /* SunburstHitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunburstHitTesting.swift; sourceTree = "<group>"; };
+		4A0001000000000000000011 /* PolarMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarMath.swift; sourceTree = "<group>"; };
+		4A0001000000000000000012 /* VolumeDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeDetector.swift; sourceTree = "<group>"; };
+		4A0001000000000000000013 /* FullDiskAccessChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullDiskAccessChecker.swift; sourceTree = "<group>"; };
+		4A0001000000000000000014 /* CollectorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectorItem.swift; sourceTree = "<group>"; };
+		4A0001000000000000000015 /* DiskSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskSelectorView.swift; sourceTree = "<group>"; };
+		4A0001000000000000000016 /* CollectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectorView.swift; sourceTree = "<group>"; };
+		4A0001000000000000000017 /* TreemapLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreemapLayout.swift; sourceTree = "<group>"; };
+		4A0001000000000000000018 /* TreemapCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreemapCanvasView.swift; sourceTree = "<group>"; };
+		4A0001000000000000000019 /* LicenseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseManager.swift; sourceTree = "<group>"; };
+		4A000100000000000000001A /* ProUpgradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProUpgradeView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4D0001000000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C0001000000000000000001 /* root */ = {
+			isa = PBXGroup;
+			children = (
+				4C0001000000000000000002 /* DriveMosaic */,
+				4C000100000000000000000A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4C0001000000000000000002 /* DriveMosaic */ = {
+			isa = PBXGroup;
+			children = (
+				4C0001000000000000000003 /* App */,
+				4C0001000000000000000004 /* Models */,
+				4C0001000000000000000005 /* Scanning */,
+				4C0001000000000000000006 /* Visualization */,
+				4C0001000000000000000007 /* Views */,
+				4C0001000000000000000008 /* Utilities */,
+				4C0001000000000000000009 /* Resources */,
+				4A000100000000000000000A /* DriveMosaic.entitlements */,
+			);
+			path = DriveMosaic;
+			sourceTree = "<group>";
+		};
+		4C0001000000000000000003 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4A0001000000000000000001 /* DriveMosaicApp.swift */,
+				4A0001000000000000000002 /* AppState.swift */,
+				4A0001000000000000000019 /* LicenseManager.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4C0001000000000000000004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4A0001000000000000000003 /* FileNode.swift */,
+				4A0001000000000000000014 /* CollectorItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4C0001000000000000000005 /* Scanning */ = {
+			isa = PBXGroup;
+			children = (
+				4A0001000000000000000004 /* ScanEvent.swift */,
+				4A0001000000000000000005 /* FileScanner.swift */,
+				4A0001000000000000000006 /* ScanCoordinator.swift */,
+				4A0001000000000000000012 /* VolumeDetector.swift */,
+				4A0001000000000000000013 /* FullDiskAccessChecker.swift */,
+			);
+			path = Scanning;
+			sourceTree = "<group>";
+		};
+		4C0001000000000000000006 /* Visualization */ = {
+			isa = PBXGroup;
+			children = (
+				4A000100000000000000000C /* ArcDescriptor.swift */,
+				4A000100000000000000000D /* ColorAssigner.swift */,
+				4A000100000000000000000E /* SunburstLayout.swift */,
+				4A000100000000000000000F /* SunburstCanvasView.swift */,
+				4A0001000000000000000010 /* SunburstHitTesting.swift */,
+				4A0001000000000000000017 /* TreemapLayout.swift */,
+				4A0001000000000000000018 /* TreemapCanvasView.swift */,
+			);
+			path = Visualization;
+			sourceTree = "<group>";
+		};
+		4C0001000000000000000007 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4A0001000000000000000008 /* ContentView.swift */,
+				4A0001000000000000000015 /* DiskSelectorView.swift */,
+				4A0001000000000000000016 /* CollectorView.swift */,
+				4A000100000000000000001A /* ProUpgradeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4C0001000000000000000008 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4A0001000000000000000007 /* ByteFormatter.swift */,
+				4A0001000000000000000011 /* PolarMath.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4C0001000000000000000009 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4A0001000000000000000009 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4C000100000000000000000A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4A000100000000000000000B /* DriveMosaic.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4E0001000000000000000001 /* DriveMosaic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 510001000000000000000002 /* Build configuration list for PBXNativeTarget "DriveMosaic" */;
+			buildPhases = (
+				4D0001000000000000000001 /* Sources */,
+				4D0001000000000000000002 /* Frameworks */,
+				4D0001000000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DriveMosaic;
+			productName = DriveMosaic;
+			productReference = 4A000100000000000000000B /* DriveMosaic.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4F0001000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					4E0001000000000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 510001000000000000000001 /* Build configuration list for PBXProject "DriveMosaic" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4C0001000000000000000001 /* root */;
+			productRefGroup = 4C000100000000000000000A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4E0001000000000000000001 /* DriveMosaic */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4D0001000000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B0001000000000000000009 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4D0001000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B0001000000000000000001 /* DriveMosaicApp.swift in Sources */,
+				4B0001000000000000000002 /* AppState.swift in Sources */,
+				4B0001000000000000000003 /* FileNode.swift in Sources */,
+				4B0001000000000000000004 /* ScanEvent.swift in Sources */,
+				4B0001000000000000000005 /* FileScanner.swift in Sources */,
+				4B0001000000000000000006 /* ScanCoordinator.swift in Sources */,
+				4B0001000000000000000007 /* ByteFormatter.swift in Sources */,
+				4B0001000000000000000008 /* ContentView.swift in Sources */,
+				4B000100000000000000000A /* ArcDescriptor.swift in Sources */,
+				4B000100000000000000000B /* ColorAssigner.swift in Sources */,
+				4B000100000000000000000C /* SunburstLayout.swift in Sources */,
+				4B000100000000000000000D /* SunburstCanvasView.swift in Sources */,
+				4B000100000000000000000E /* SunburstHitTesting.swift in Sources */,
+				4B000100000000000000000F /* PolarMath.swift in Sources */,
+				4B0001000000000000000010 /* VolumeDetector.swift in Sources */,
+				4B0001000000000000000011 /* FullDiskAccessChecker.swift in Sources */,
+				4B0001000000000000000012 /* CollectorItem.swift in Sources */,
+				4B0001000000000000000013 /* DiskSelectorView.swift in Sources */,
+				4B0001000000000000000014 /* CollectorView.swift in Sources */,
+				4B0001000000000000000015 /* TreemapLayout.swift in Sources */,
+				4B0001000000000000000016 /* TreemapCanvasView.swift in Sources */,
+				4B0001000000000000000017 /* LicenseManager.swift in Sources */,
+				4B0001000000000000000018 /* ProUpgradeView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		500001000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		500001000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		500001000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DriveMosaic/DriveMosaic.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Black Cloud LLC";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blackcloud.DriveMosaic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		500001000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DriveMosaic/DriveMosaic.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Black Cloud LLC";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blackcloud.DriveMosaic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		510001000000000000000001 /* Build configuration list for PBXProject "DriveMosaic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				500001000000000000000001 /* Debug */,
+				500001000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		510001000000000000000002 /* Build configuration list for PBXNativeTarget "DriveMosaic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				500001000000000000000003 /* Debug */,
+				500001000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4F0001000000000000000001 /* Project object */;
+}

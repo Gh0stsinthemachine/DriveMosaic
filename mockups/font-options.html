@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Pairing Options — Frosted Glass Treemap</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #1a1a1e;
+    color: #e0e0e0;
+    padding: 32px;
+  }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+  .subtitle { font-size: 14px; color: #888; margin-bottom: 40px; }
+  .mockup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .mockup-card {
+    background: #222228;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #333;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .mockup-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+  .card-header { padding: 20px 24px 12px; }
+  .card-header h2 { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+  .card-header p { font-size: 12px; color: #777; line-height: 1.5; }
+  .font-sample {
+    padding: 0 24px 16px;
+    display: flex;
+    gap: 24px;
+    align-items: baseline;
+  }
+  .font-sample .label-sample {
+    padding: 4px 10px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+  }
+  .font-sample .size-sample {
+    font-size: 11px;
+    color: #888;
+  }
+  canvas { display: block; width: 100%; }
+  .notes {
+    text-align: center;
+    margin-top: 48px;
+    padding: 24px;
+    background: #222228;
+    border-radius: 12px;
+    border: 1px solid #333;
+  }
+  .notes h3 { font-size: 16px; margin-bottom: 8px; color: #fff; }
+  .notes p { font-size: 13px; color: #888; line-height: 1.6; max-width: 700px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<h1>Font Pairings on Frosted Glass</h1>
+<p class="subtitle">Same frosted glass style, four different type treatments. All fonts ship with macOS — zero dependencies.</p>
+
+<div class="mockup-grid">
+
+  <div class="mockup-card">
+    <div class="card-header">
+      <h2>1. SF Pro Rounded + SF Mono</h2>
+      <p>Rounded sans for folder names — warm, friendly, distinctive. Monospace for sizes — technical precision. Good contrast between the two roles.</p>
+    </div>
+    <div class="font-sample">
+      <span class="label-sample" style="font-family: 'SF Pro Rounded', ui-rounded, system-ui; font-weight: 600; font-size: 13px; color: #ddd;">Ableton Projects</span>
+      <span class="size-sample" style="font-family: 'SF Mono', ui-monospace, monospace; font-weight: 500;">4.2 GB</span>
+    </div>
+    <canvas id="canvas-1" width="760" height="480"></canvas>
+  </div>
+
+  <div class="mockup-card">
+    <div class="card-header">
+      <h2>2. SF Pro Display + Condensed Sizes</h2>
+      <p>Display weight for labels — sharp, authoritative. Condensed tracking on sizes for density. Most "pro tool" feeling. Clean hierarchy.</p>
+    </div>
+    <div class="font-sample">
+      <span class="label-sample" style="font-family: 'SF Pro Display', system-ui; font-weight: 700; font-size: 13px; color: #ddd; letter-spacing: -0.3px;">Ableton Projects</span>
+      <span class="size-sample" style="font-family: 'SF Pro Display', system-ui; font-weight: 400; letter-spacing: 0.5px; font-variant-numeric: tabular-nums;">4.2 GB</span>
+    </div>
+    <canvas id="canvas-2" width="760" height="480"></canvas>
+  </div>
+
+  <div class="mockup-card">
+    <div class="card-header">
+      <h2>3. New York (Serif) + SF Mono</h2>
+      <p>Apple's serif face for labels — editorial, unexpected for a utility. Mono for data. Strong personality, stands out from every other disk tool. Fits the "underground press" brand.</p>
+    </div>
+    <div class="font-sample">
+      <span class="label-sample" style="font-family: 'New York', 'Iowan Old Style', Georgia, serif; font-weight: 700; font-size: 13px; color: #ddd;">Ableton Projects</span>
+      <span class="size-sample" style="font-family: 'SF Mono', ui-monospace, monospace; font-weight: 400;">4.2 GB</span>
+    </div>
+    <canvas id="canvas-3" width="760" height="480"></canvas>
+  </div>
+
+  <div class="mockup-card">
+    <div class="card-header">
+      <h2>4. Monospace Everything (SF Mono)</h2>
+      <p>Full monospace — hacker aesthetic. Labels and sizes in the same family, differentiated by weight. Terminal/dev-tool vibe. Very utilitarian.</p>
+    </div>
+    <div class="font-sample">
+      <span class="label-sample" style="font-family: 'SF Mono', ui-monospace, monospace; font-weight: 600; font-size: 12px; color: #ddd;">Ableton Projects</span>
+      <span class="size-sample" style="font-family: 'SF Mono', ui-monospace, monospace; font-weight: 400;">4.2 GB</span>
+    </div>
+    <canvas id="canvas-4" width="760" height="480"></canvas>
+  </div>
+
+</div>
+
+<div class="notes">
+  <h3>Font Availability on macOS</h3>
+  <p><strong>SF Pro Rounded</strong> — via <code>.systemFont(.rounded)</code> design in SwiftUI. <strong>SF Pro Display</strong> — the default system font at larger sizes. <strong>New York</strong> — via <code>.serif</code> design in SwiftUI, ships on macOS 11+. <strong>SF Mono</strong> — via <code>.system(.monospaced)</code>. All zero-cost, zero-bundle, rendered natively by Core Text.</p>
+</div>
+
+<script>
+// Mock treemap data (same structure as before)
+const mockBlocks = [
+  { x: 0, y: 0, w: 0.48, h: 0.55, label: 'Ableton Projects', size: '4.2 GB', hue: 30, isDir: true, children: [
+    { x: 0.01, y: 0.065, w: 0.22, h: 0.24, hue: 35, label: 'Live Set 1', size: '1.1 GB' },
+    { x: 0.24, y: 0.065, w: 0.18, h: 0.24, hue: 40, label: 'Samples', size: '890 MB' },
+    { x: 0.01, y: 0.31, w: 0.14, h: 0.18, hue: 25, label: 'Recordings', size: '620 MB' },
+    { x: 0.16, y: 0.31, w: 0.12, h: 0.18, hue: 45, label: 'Bounces', size: '410 MB' },
+    { x: 0.29, y: 0.31, w: 0.08, h: 0.10, hue: 50, isFile: true },
+    { x: 0.38, y: 0.31, w: 0.06, h: 0.10, hue: 55, isFile: true },
+    { x: 0.29, y: 0.42, w: 0.15, h: 0.07, hue: 33, isFile: true },
+  ]},
+  { x: 0.50, y: 0, w: 0.30, h: 0.42, label: 'Black Cloud', size: '1.8 GB', hue: 160, isDir: true, children: [
+    { x: 0.51, y: 0.065, w: 0.14, h: 0.18, hue: 155, label: 'Sessions', size: '680 MB' },
+    { x: 0.66, y: 0.065, w: 0.12, h: 0.18, hue: 170, label: 'Masters', size: '520 MB' },
+    { x: 0.51, y: 0.25, w: 0.10, h: 0.12, hue: 165, isFile: true },
+    { x: 0.62, y: 0.25, w: 0.08, h: 0.12, hue: 150, isFile: true },
+    { x: 0.71, y: 0.25, w: 0.07, h: 0.12, hue: 145, isFile: true },
+  ]},
+  { x: 0.82, y: 0, w: 0.18, h: 0.42, label: 'Audiobooks', size: '1.4 GB', hue: 195, isDir: true, children: [
+    { x: 0.83, y: 0.065, w: 0.16, h: 0.15, hue: 200, isFile: true },
+    { x: 0.83, y: 0.22, w: 0.08, h: 0.14, hue: 190, isFile: true },
+    { x: 0.92, y: 0.22, w: 0.07, h: 0.14, hue: 185, isFile: true },
+  ]},
+  { x: 0.50, y: 0.44, w: 0.22, h: 0.28, label: '21 Gun Solution', size: '1.3 GB', hue: 270, isDir: true, children: [
+    { x: 0.51, y: 0.505, w: 0.10, h: 0.10, hue: 275, isFile: true },
+    { x: 0.62, y: 0.505, w: 0.08, h: 0.10, hue: 265, isFile: true },
+    { x: 0.51, y: 0.61, w: 0.19, h: 0.06, hue: 280, isFile: true },
+  ]},
+  { x: 0.74, y: 0.44, w: 0.14, h: 0.28, label: 'Screenshots', size: '654 MB', hue: 300, isDir: true, children: [
+    { x: 0.75, y: 0.505, w: 0.06, h: 0.10, hue: 305, isFile: true },
+    { x: 0.82, y: 0.505, w: 0.05, h: 0.10, hue: 295, isFile: true },
+    { x: 0.75, y: 0.61, w: 0.12, h: 0.06, hue: 310, isFile: true },
+  ]},
+  { x: 0.90, y: 0.44, w: 0.10, h: 0.28, label: 'Claude', size: '234 MB', hue: 240, isDir: true, children: [
+    { x: 0.91, y: 0.505, w: 0.08, h: 0.16, hue: 245, isFile: true },
+  ]},
+  { x: 0, y: 0.57, w: 0.35, h: 0.43, label: 'Installers', size: '2.1 GB', hue: 120, isDir: true, children: [
+    { x: 0.01, y: 0.635, w: 0.16, h: 0.18, hue: 125, label: 'macOS', size: '780 MB' },
+    { x: 0.18, y: 0.635, w: 0.12, h: 0.18, hue: 115, label: 'VSTs', size: '540 MB' },
+    { x: 0.01, y: 0.82, w: 0.10, h: 0.12, hue: 130, isFile: true },
+    { x: 0.12, y: 0.82, w: 0.08, h: 0.12, hue: 110, isFile: true },
+    { x: 0.21, y: 0.82, w: 0.13, h: 0.12, hue: 135 },
+  ]},
+  { x: 0.37, y: 0.57, w: 0.18, h: 0.25, label: 'Resumes', size: '446 MB', hue: 340, isDir: true, children: [
+    { x: 0.38, y: 0.635, w: 0.08, h: 0.12, hue: 345, isFile: true },
+    { x: 0.47, y: 0.635, w: 0.06, h: 0.12, hue: 335, isFile: true },
+  ]},
+  { x: 0.37, y: 0.84, w: 0.18, h: 0.16, label: 'DNB Mix 2025', size: '181 MB', hue: 60, isFile: true },
+  { x: 0.57, y: 0.74, w: 0.20, h: 0.26, label: 'Images', size: '203 MB', hue: 80, isDir: true, children: [
+    { x: 0.58, y: 0.805, w: 0.09, h: 0.12, hue: 85, isFile: true },
+    { x: 0.68, y: 0.805, w: 0.08, h: 0.12, hue: 75, isFile: true },
+  ]},
+  { x: 0.79, y: 0.74, w: 0.21, h: 0.26, label: 'Downloads', size: '54 MB', hue: 15, isDir: true, children: [
+    { x: 0.80, y: 0.805, w: 0.09, h: 0.08, hue: 20, isFile: true },
+    { x: 0.90, y: 0.805, w: 0.09, h: 0.08, hue: 10, isFile: true },
+  ]},
+];
+
+function roundRect(ctx, x, y, w, h, r) {
+  if (w < 0 || h < 0) return;
+  r = Math.min(r, w/2, h/2);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+// Shared frosted glass block renderer
+function drawFrostedBlock(ctx, b, depth, W, H, fonts) {
+  const x = b.x * W, y = b.y * H, w = b.w * W, h = b.h * H;
+  const r = depth === 0 ? 10 : 5;
+  const inset = 2;
+
+  const alpha = depth === 0 ? 0.35 : 0.25;
+  const sat = b.isFile ? '20%' : '50%';
+  const light = depth === 0 ? '50%' : '45%';
+
+  // Outer glow for directories
+  if (depth === 0 && b.isDir) {
+    ctx.save();
+    ctx.shadowColor = `hsla(${b.hue}, 60%, 50%, 0.2)`;
+    ctx.shadowBlur = 20;
+    roundRect(ctx, x + inset, y + inset, w - inset*2, h - inset*2, r);
+    ctx.fillStyle = `hsla(${b.hue}, ${sat}, ${light}, ${alpha})`;
+    ctx.fill();
+    ctx.restore();
+  } else {
+    roundRect(ctx, x + inset, y + inset, w - inset*2, h - inset*2, r);
+    ctx.fillStyle = `hsla(${b.hue}, ${sat}, ${light}, ${alpha})`;
+    ctx.fill();
+  }
+
+  // Frosted border
+  const borderGrad = ctx.createLinearGradient(x, y, x, y + h);
+  borderGrad.addColorStop(0, `hsla(${b.hue}, 40%, 70%, 0.5)`);
+  borderGrad.addColorStop(0.5, `hsla(${b.hue}, 40%, 60%, 0.15)`);
+  borderGrad.addColorStop(1, `hsla(${b.hue}, 40%, 50%, 0.08)`);
+  roundRect(ctx, x + inset, y + inset, w - inset*2, h - inset*2, r);
+  ctx.strokeStyle = borderGrad;
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+
+  // Inner highlight
+  if (h > 30) {
+    const innerGrad = ctx.createLinearGradient(x, y + inset, x, y + inset + 20);
+    innerGrad.addColorStop(0, `hsla(${b.hue}, 50%, 80%, 0.12)`);
+    innerGrad.addColorStop(1, `hsla(${b.hue}, 50%, 80%, 0)`);
+    roundRect(ctx, x + inset + 1, y + inset + 1, w - inset*2 - 2, Math.min(h - 4, 20), r - 1);
+    ctx.fillStyle = innerGrad;
+    ctx.fill();
+  }
+
+  // Label with font pairing
+  if (b.label && w > 60 && h > 28) {
+    const fontSize = depth === 0 ? fonts.labelSize : fonts.labelSizeSmall;
+    ctx.font = `${fonts.labelWeight} ${fontSize}px ${fonts.labelFamily}`;
+    if (fonts.labelTracking) ctx.letterSpacing = fonts.labelTracking;
+    const textW = ctx.measureText(b.label).width;
+
+    const px = x + inset + 8;
+    const py = y + inset + 7;
+    const pw = Math.min(textW + 16, w - 20);
+    const ph = fontSize + 12;
+
+    // Frosted pill
+    roundRect(ctx, px, py, pw, ph, 6);
+    ctx.fillStyle = 'rgba(255,255,255,0.08)';
+    ctx.fill();
+    roundRect(ctx, px, py, pw, ph, 6);
+    ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+    ctx.lineWidth = 0.5;
+    ctx.stroke();
+
+    ctx.fillStyle = 'rgba(255,255,255,0.88)';
+    ctx.fillText(b.label, px + 8, py + fontSize + 2, pw - 16);
+
+    // Size in secondary font
+    if (b.size) {
+      ctx.font = `${fonts.sizeWeight} ${fonts.sizeSize}px ${fonts.sizeFamily}`;
+      ctx.fillStyle = 'rgba(255,255,255,0.4)';
+      ctx.fillText(b.size, px + pw + 8, py + fontSize + 1, 80);
+    }
+
+    ctx.letterSpacing = '0px'; // reset
+  }
+
+  // Recurse
+  if (b.children) {
+    for (const child of b.children) {
+      drawFrostedBlock(ctx, child, depth + 1, W, H, fonts);
+    }
+  }
+}
+
+function drawWithFonts(canvasId, fonts) {
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+
+  const bgGrad = ctx.createLinearGradient(0, 0, W, H);
+  bgGrad.addColorStop(0, '#12121a');
+  bgGrad.addColorStop(1, '#1a1a28');
+  ctx.fillStyle = bgGrad;
+  ctx.fillRect(0, 0, W, H);
+
+  for (const b of mockBlocks) {
+    drawFrostedBlock(ctx, b, 0, W, H, fonts);
+  }
+}
+
+// Font Option 1: SF Pro Rounded + SF Mono
+drawWithFonts('canvas-1', {
+  labelFamily: '"SF Pro Rounded", ui-rounded, system-ui, sans-serif',
+  labelWeight: '600',
+  labelSize: 13,
+  labelSizeSmall: 10,
+  sizeFamily: '"SF Mono", ui-monospace, "Menlo", monospace',
+  sizeWeight: '500',
+  sizeSize: 10,
+});
+
+// Font Option 2: SF Pro Display bold + condensed sizes
+drawWithFonts('canvas-2', {
+  labelFamily: '"SF Pro Display", system-ui, sans-serif',
+  labelWeight: '700',
+  labelSize: 13,
+  labelSizeSmall: 10,
+  labelTracking: '-0.3px',
+  sizeFamily: '"SF Pro Display", system-ui, sans-serif',
+  sizeWeight: '400',
+  sizeSize: 10,
+});
+
+// Font Option 3: New York (serif) + SF Mono
+drawWithFonts('canvas-3', {
+  labelFamily: '"New York", "Iowan Old Style", "Palatino Linotype", "Georgia", serif',
+  labelWeight: '700',
+  labelSize: 13,
+  labelSizeSmall: 10,
+  sizeFamily: '"SF Mono", ui-monospace, "Menlo", monospace',
+  sizeWeight: '400',
+  sizeSize: 10,
+});
+
+// Font Option 4: All monospace
+drawWithFonts('canvas-4', {
+  labelFamily: '"SF Mono", ui-monospace, "Menlo", monospace',
+  labelWeight: '600',
+  labelSize: 12,
+  labelSizeSmall: 9,
+  sizeFamily: '"SF Mono", ui-monospace, "Menlo", monospace',
+  sizeWeight: '400',
+  sizeSize: 10,
+});
+</script>
+</body>
+</html>

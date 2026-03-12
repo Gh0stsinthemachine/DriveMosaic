@@ -12,3 +12,9 @@ DerivedData/
 
 # Claude
 .claude/
+
+# Wrangler (Cloudflare auth)
+.wrangler/
+
+# Distribution
+dist/

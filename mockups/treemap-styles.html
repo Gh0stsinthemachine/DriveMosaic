@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Treemap Visual Mockups</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+    background: #1a1a1e;
+    color: #e0e0e0;
+    padding: 32px;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 40px;
+  }
+  .mockup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .mockup-card {
+    background: #222228;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #333;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .mockup-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+  .mockup-card.selected {
+    border-color: #4a9eff;
+    box-shadow: 0 0 0 2px #4a9eff33;
+  }
+  .card-header {
+    padding: 20px 24px 12px;
+  }
+  .card-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .card-header p {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.5;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .tag-easy { background: #2d4a2d; color: #7fcf7f; }
+  .tag-medium { background: #4a3d2d; color: #cfaf7f; }
+  .tag-hard { background: #4a2d2d; color: #cf7f7f; }
+  canvas {
+    display: block;
+    width: 100%;
+    image-rendering: auto;
+  }
+  .comparison-note {
+    text-align: center;
+    margin-top: 48px;
+    padding: 24px;
+    background: #222228;
+    border-radius: 12px;
+    border: 1px solid #333;
+  }
+  .comparison-note h3 { font-size: 16px; margin-bottom: 8px; color: #fff; }
+  .comparison-note p { font-size: 13px; color: #888; line-height: 1.6; max-width: 700px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<h1>Treemap Visual Directions</h1>
+<p class="subtitle">Four approaches to elevate the block visualization. Click to expand any mockup.</p>
+
+<div class="mockup-grid">
+  <!-- Option A: Soft Depth -->
+  <div class="mockup-card" id="card-a">
+    <div class="card-header">
+      <h2>A. Soft Depth</h2>
+      <p>Subtle gradients top-to-bottom on each block, rounded corners, drop shadows between layers. Feels like physical tiles stacked on a surface. Warm, approachable.</p>
+      <span class="tag tag-easy">Low effort</span>
+    </div>
+    <canvas id="canvas-a" width="760" height="480"></canvas>
+  </div>
+
+  <!-- Option B: Glassmorphism -->
+  <div class="mockup-card" id="card-b">
+    <div class="card-header">
+      <h2>B. Frosted Glass</h2>
+      <p>Semi-transparent blocks with frosted edges and soft glows. Inner content blocks have a translucent quality. Labels float above with blur backgrounds. Modern, premium.</p>
+      <span class="tag tag-medium">Medium effort</span>
+    </div>
+    <canvas id="canvas-b" width="760" height="480"></canvas>
+  </div>
+
+  <!-- Option C: Outlined Modern -->
+  <div class="mockup-card" id="card-c">
+    <div class="card-header">
+      <h2>C. Outlined Minimal</h2>
+      <p>Thin luminous borders, dark fills with subtle color tint. Clean typography. Monochrome base with color accents on hover. Professional, data-viz feel.</p>
+      <span class="tag tag-easy">Low effort</span>
+    </div>
+    <canvas id="canvas-c" width="760" height="480"></canvas>
+  </div>
+
+  <!-- Option D: Neon Cartography -->
+  <div class="mockup-card" id="card-d">
+    <div class="card-header">
+      <h2>D. Neon Cartography</h2>
+      <p>Dark background, vibrant saturated fills, glowing borders. Directory labels in bold capsules. File blocks have a subtle noise texture. Bold, distinctive, very non-DaisyDisk.</p>
+      <span class="tag tag-medium">Medium effort</span>
+    </div>
+    <canvas id="canvas-d" width="760" height="480"></canvas>
+  </div>
+</div>
+
+<div class="comparison-note">
+  <h3>Implementation Notes</h3>
+  <p>All four styles are achievable in SwiftUI Canvas with zero external dependencies. Options A and C are quick wins using gradient fills and stroke tweaks. Options B and D require a bit more drawing logic (glow effects via multiple strokes, noise textures via tiled patterns). Any can be combined &mdash; e.g., Soft Depth blocks with Neon borders.</p>
+</div>
+
+<script>
+// Shared mock data representing treemap blocks
+const mockBlocks = [
+  // Large directories
+  { x: 0, y: 0, w: 0.48, h: 0.55, label: 'Ableton Projects', size: '4.2 GB', hue: 30, isDir: true, children: [
+    { x: 0.01, y: 0.06, w: 0.22, h: 0.24, hue: 35, label: 'Live Set 1' },
+    { x: 0.24, y: 0.06, w: 0.18, h: 0.24, hue: 40, label: 'Samples' },
+    { x: 0.01, y: 0.31, w: 0.14, h: 0.18, hue: 25, label: 'Recordings' },
+    { x: 0.16, y: 0.31, w: 0.12, h: 0.18, hue: 45, label: 'Bounces' },
+    { x: 0.29, y: 0.31, w: 0.08, h: 0.10, hue: 50, isFile: true },
+    { x: 0.38, y: 0.31, w: 0.06, h: 0.10, hue: 55, isFile: true },
+    { x: 0.29, y: 0.42, w: 0.15, h: 0.07, hue: 33, isFile: true },
+  ]},
+  { x: 0.50, y: 0, w: 0.30, h: 0.42, label: 'Black Cloud', size: '1.8 GB', hue: 160, isDir: true, children: [
+    { x: 0.51, y: 0.06, w: 0.14, h: 0.18, hue: 155 },
+    { x: 0.66, y: 0.06, w: 0.12, h: 0.18, hue: 170 },
+    { x: 0.51, y: 0.25, w: 0.10, h: 0.12, hue: 165, isFile: true },
+    { x: 0.62, y: 0.25, w: 0.08, h: 0.12, hue: 150, isFile: true },
+    { x: 0.71, y: 0.25, w: 0.07, h: 0.12, hue: 145, isFile: true },
+  ]},
+  { x: 0.82, y: 0, w: 0.18, h: 0.42, label: 'Audiobooks', size: '1.4 GB', hue: 195, isDir: true, children: [
+    { x: 0.83, y: 0.06, w: 0.16, h: 0.15, hue: 200, isFile: true },
+    { x: 0.83, y: 0.22, w: 0.08, h: 0.14, hue: 190, isFile: true },
+    { x: 0.92, y: 0.22, w: 0.07, h: 0.14, hue: 185, isFile: true },
+  ]},
+  { x: 0.50, y: 0.44, w: 0.22, h: 0.28, label: '21 Gun Solution', size: '1.3 GB', hue: 270, isDir: true, children: [
+    { x: 0.51, y: 0.50, w: 0.10, h: 0.10, hue: 275, isFile: true },
+    { x: 0.62, y: 0.50, w: 0.08, h: 0.10, hue: 265, isFile: true },
+    { x: 0.51, y: 0.61, w: 0.19, h: 0.06, hue: 280, isFile: true },
+  ]},
+  { x: 0.74, y: 0.44, w: 0.14, h: 0.28, label: 'Screenshots', size: '653 MB', hue: 300, isDir: true, children: [
+    { x: 0.75, y: 0.50, w: 0.06, h: 0.10, hue: 305, isFile: true },
+    { x: 0.82, y: 0.50, w: 0.05, h: 0.10, hue: 295, isFile: true },
+    { x: 0.75, y: 0.61, w: 0.12, h: 0.06, hue: 310, isFile: true },
+  ]},
+  { x: 0.90, y: 0.44, w: 0.10, h: 0.28, label: 'Claude', size: '234 MB', hue: 240, isDir: true, children: [
+    { x: 0.91, y: 0.50, w: 0.08, h: 0.16, hue: 245, isFile: true },
+  ]},
+  // Bottom row
+  { x: 0, y: 0.57, w: 0.35, h: 0.43, label: 'Needs to be installed', size: '2.1 GB', hue: 120, isDir: true, children: [
+    { x: 0.01, y: 0.63, w: 0.16, h: 0.18, hue: 125 },
+    { x: 0.18, y: 0.63, w: 0.12, h: 0.18, hue: 115 },
+    { x: 0.01, y: 0.82, w: 0.10, h: 0.12, hue: 130, isFile: true },
+    { x: 0.12, y: 0.82, w: 0.08, h: 0.12, hue: 110, isFile: true },
+    { x: 0.21, y: 0.82, w: 0.13, h: 0.12, hue: 135 },
+  ]},
+  { x: 0.37, y: 0.57, w: 0.18, h: 0.25, label: 'Resumes', size: '446 MB', hue: 340, isDir: true, children: [
+    { x: 0.38, y: 0.63, w: 0.08, h: 0.12, hue: 345, isFile: true },
+    { x: 0.47, y: 0.63, w: 0.06, h: 0.12, hue: 335, isFile: true },
+  ]},
+  { x: 0.37, y: 0.84, w: 0.18, h: 0.16, label: 'DNB Mix 2025', size: '181 MB', hue: 60, isFile: true },
+  { x: 0.57, y: 0.74, w: 0.20, h: 0.26, label: 'Images', size: '203 MB', hue: 80, isDir: true, children: [
+    { x: 0.58, y: 0.80, w: 0.09, h: 0.12, hue: 85, isFile: true },
+    { x: 0.68, y: 0.80, w: 0.08, h: 0.12, hue: 75, isFile: true },
+  ]},
+  { x: 0.79, y: 0.74, w: 0.21, h: 0.26, label: 'Downloads', size: '54 MB', hue: 15, isDir: true, children: [
+    { x: 0.80, y: 0.80, w: 0.09, h: 0.08, hue: 20, isFile: true },
+    { x: 0.90, y: 0.80, w: 0.09, h: 0.08, hue: 10, isFile: true },
+  ]},
+];
+
+function getAllBlocks(blocks) {
+  let all = [];
+  for (const b of blocks) {
+    all.push(b);
+    if (b.children) {
+      all = all.concat(b.children);
+    }
+  }
+  return all;
+}
+
+// =============================================
+// OPTION A: Soft Depth
+// =============================================
+function drawOptionA(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+
+  // Background
+  ctx.fillStyle = '#1e1e24';
+  ctx.fillRect(0, 0, W, H);
+
+  function drawBlock(b, depth) {
+    const x = b.x * W, y = b.y * H, w = b.w * W, h = b.h * H;
+    const r = depth === 0 ? 8 : 4;
+    const inset = 1.5;
+
+    // Shadow for depth
+    if (depth === 0) {
+      ctx.save();
+      ctx.shadowColor = 'rgba(0,0,0,0.35)';
+      ctx.shadowBlur = 12;
+      ctx.shadowOffsetX = 2;
+      ctx.shadowOffsetY = 4;
+    }
+
+    // Gradient fill - top lighter, bottom darker
+    const sat = b.isFile ? '15%' : (depth === 0 ? '55%' : '40%');
+    const lightTop = b.isFile ? '38%' : (depth === 0 ? '52%' : '44%');
+    const lightBot = b.isFile ? '28%' : (depth === 0 ? '38%' : '32%');
+
+    const grad = ctx.createLinearGradient(x, y, x, y + h);
+    grad.addColorStop(0, `hsl(${b.hue}, ${sat}, ${lightTop})`);
+    grad.addColorStop(1, `hsl(${b.hue}, ${sat}, ${lightBot})`);
+
+    roundRect(ctx, x + inset, y + inset, w - inset*2, h - inset*2, r);
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    // Top highlight edge
+    const edgeGrad = ctx.createLinearGradient(x, y, x, y + 3);
+    edgeGrad.addColorStop(0, `hsla(${b.hue}, 60%, 70%, 0.3)`);
+    edgeGrad.addColorStop(1, `hsla(${b.hue}, 60%, 70%, 0)`);
+    roundRect(ctx, x + inset, y + inset, w - inset*2, Math.min(h - inset*2, 6), r);
+    ctx.fillStyle = edgeGrad;
+    ctx.fill();
+
+    if (depth === 0) ctx.restore();
+
+    // Subtle border
+    roundRect(ctx, x + inset, y + inset, w - inset*2, h - inset*2, r);
+    ctx.strokeStyle = `hsla(${b.hue}, 30%, 20%, 0.6)`;
+    ctx.lineWidth = 0.5;
+    ctx.stroke();
+
+    // Label
+    if (b.label && w > 60 && h > 28) {
+      const fontSize = depth === 0 ? 13 : 10;
+      ctx.font = `600 ${fontSize}px -apple-system, BlinkMacSystemFont, sans-serif`;
+      const textW = ctx.measureText(b.label).width;
+
+      // Pill background for label
+      const px = x + inset + 6;
+      const py = y + inset + 5;
+      const pw = Math.min(textW + 12, w - 16);
+      const ph = fontSize + 8;
+
+      roundRect(ctx, px, py, pw, ph, 4);
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(255,255,255,0.9)';
+      ctx.fillText(b.label, px + 6, py + fontSize + 1, pw - 12);
+
+      if (b.size) {
+        ctx.font = `500 9px -apple-system, sans-serif`;
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.fillText(b.size, px + 6 + textW + 8, py + fontSize, 80);
+      }
+    }
+
+    // Recurse children
+    if (b.children) {
+      for (const child of b.children) {
+        drawBlock(child, depth + 1);
+      }
+    }
+  }
+
+  for (const b of mockBlocks) {
+    drawBlock(b, 0);
+  }
+}
+
+// =============================================
+// OPTION B: Frosted Glass
+// =============================================
+function drawOptionB(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+
+  // Dark gradient background
+  const bgGrad = ctx.createLinearGradient(0, 0, W, H);
+  bgGrad.addColorStop(0, '#12121a');
+  bgGrad.addColorStop(1, '#1a1a28');
+  ctx.fillStyle = bgGrad;
+  ctx.fillRect(0, 0, W, H);
+
+  function drawBlock(b, depth) {
+    const x = b.x * W, y = b.y * H, w = b.w * W, h = b.h * H;
+    const r = depth === 0 ? 10 : 5;
+    const inset = 2;
+
+    const alpha = depth === 0 ? 0.35 : 0.25;
+    const sat = b.isFile ? '20%' : '50%';
+    const light = depth === 0 ? '50%' : '45%';
+
+    // Outer glow for directories
+    if (depth === 0 && b.isDir) {
+      ctx.save();
+      ctx.shadowColor = `hsla(${b.hue}, 60%, 50%, 0.2)`;
+      ctx.shadowBlur = 20;
+      roundRect(ctx, x + inset, y + inset, w - inset*2, h - inset*2, r);
+      ctx.fillStyle = `hsla(${b.hue}, ${sat}, ${light}, ${alpha})`;
+      ctx.fill();
+      ctx.restore();
+    } else {
+      roundRect(ctx, x + inset, y + inset, w - inset*2, h - inset*2, r);
+      ctx.fillStyle = `hsla(${b.hue}, ${sat}, ${light}, ${alpha})`;
+      ctx.fill();
+    }
+
+    // Frosted border - bright at top, fades
+    const borderGrad = ctx.createLinearGradient(x, y, x, y + h);
+    borderGrad.addColorStop(0, `hsla(${b.hue}, 40%, 70%, 0.5)`);
+    borderGrad.addColorStop(0.5, `hsla(${b.hue}, 40%, 60%, 0.15)`);
+    borderGrad.addColorStop(1, `hsla(${b.hue}, 40%, 50%, 0.08)`);
+
+    roundRect(ctx, x + inset, y + inset, w - inset*2, h - inset*2, r);
+    ctx.strokeStyle = borderGrad;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    // Inner highlight at top
+    if (h > 30) {
+      const innerGrad = ctx.createLinearGradient(x, y + inset, x, y + inset + 20);
+      innerGrad.addColorStop(0, `hsla(${b.hue}, 50%, 80%, 0.12)`);
+      innerGrad.addColorStop(1, `hsla(${b.hue}, 50%, 80%, 0)`);
+      roundRect(ctx, x + inset + 1, y + inset + 1, w - inset*2 - 2, Math.min(h - 4, 20), r - 1);
+      ctx.fillStyle = innerGrad;
+      ctx.fill();
+    }
+
+    // Label with blur-style background
+    if (b.label && w > 60 && h > 28) {
+      const fontSize = depth === 0 ? 12 : 10;
+      ctx.font = `600 ${fontSize}px -apple-system, BlinkMacSystemFont, sans-serif`;
+      const textW = ctx.measureText(b.label).width;
+
+      const px = x + inset + 8;
+      const py = y + inset + 7;
+      const pw = Math.min(textW + 14, w - 20);
+      const ph = fontSize + 10;
+
+      // Frosted pill
+      roundRect(ctx, px, py, pw, ph, 6);
+      ctx.fillStyle = 'rgba(255,255,255,0.08)';
+      ctx.fill();
+      roundRect(ctx, px, py, pw, ph, 6);
+      ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(255,255,255,0.85)';
+      ctx.fillText(b.label, px + 7, py + fontSize + 2, pw - 14);
+
+      if (b.size) {
+        ctx.font = `400 9px -apple-system, sans-serif`;
+        ctx.fillStyle = 'rgba(255,255,255,0.4)';
+        ctx.fillText(b.size, px + pw + 6, py + fontSize, 80);
+      }
+    }
+
+    if (b.children) {
+      for (const child of b.children) {
+        drawBlock(child, depth + 1);
+      }
+    }
+  }
+
+  for (const b of mockBlocks) {
+    drawBlock(b, 0);
+  }
+}
+
+// =============================================
+// OPTION C: Outlined Minimal
+// =============================================
+function drawOptionC(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+
+  ctx.fillStyle = '#111116';
+  ctx.fillRect(0, 0, W, H);
+
+  function drawBlock(b, depth) {
+    const x = b.x * W, y = b.y * H, w = b.w * W, h = b.h * H;
+    const r = depth === 0 ? 6 : 3;
+    const inset = 1.5;
+
+    // Very subtle colored fill
+    const fillAlpha = b.isFile ? 0.06 : (depth === 0 ? 0.12 : 0.08);
+    roundRect(ctx, x + inset, y + inset, w - inset*2, h - inset*2, r);
+    ctx.fillStyle = `hsla(${b.hue}, 40%, 50%, ${fillAlpha})`;
+    ctx.fill();
+
+    // Clean colored border
+    const borderAlpha = depth === 0 ? 0.6 : 0.3;
+    const borderWidth = depth === 0 ? 1.5 : 0.75;
+    roundRect(ctx, x + inset, y + inset, w - inset*2, h - inset*2, r);
+    ctx.strokeStyle = `hsla(${b.hue}, 50%, 60%, ${borderAlpha})`;
+    ctx.lineWidth = borderWidth;
+    ctx.stroke();
+
+    // Label - clean, no background
+    if (b.label && w > 55 && h > 24) {
+      const fontSize = depth === 0 ? 12 : 9;
+      ctx.font = `500 ${fontSize}px -apple-system, BlinkMacSystemFont, sans-serif`;
+
+      const px = x + inset + 8;
+      const py = y + inset + fontSize + 6;
+
+      ctx.fillStyle = `hsla(${b.hue}, 30%, 75%, 0.85)`;
+      ctx.fillText(b.label, px, py, w - 20);
+
+      if (b.size) {
+        ctx.font = `400 9px -apple-system, sans-serif`;
+        ctx.fillStyle = `hsla(${b.hue}, 20%, 55%, 0.5)`;
+        ctx.fillText(b.size, px, py + 14, 80);
+      }
+    }
+
+    if (b.children) {
+      for (const child of b.children) {
+        drawBlock(child, depth + 1);
+      }
+    }
+  }
+
+  for (const b of mockBlocks) {
+    drawBlock(b, 0);
+  }
+}
+
+// =============================================
+// OPTION D: Neon Cartography
+// =============================================
+function drawOptionD(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+
+  // Deep dark background
+  ctx.fillStyle = '#0a0a10';
+  ctx.fillRect(0, 0, W, H);
+
+  // Subtle grid pattern
+  ctx.strokeStyle = 'rgba(255,255,255,0.02)';
+  ctx.lineWidth = 0.5;
+  for (let i = 0; i < W; i += 20) {
+    ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, H); ctx.stroke();
+  }
+  for (let i = 0; i < H; i += 20) {
+    ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(W, i); ctx.stroke();
+  }
+
+  function drawBlock(b, depth) {
+    const x = b.x * W, y = b.y * H, w = b.w * W, h = b.h * H;
+    const r = depth === 0 ? 4 : 2;
+    const inset = 2;
+
+    // Vivid saturated fill
+    const sat = b.isFile ? '25%' : '70%';
+    const light = b.isFile ? '18%' : (depth === 0 ? '28%' : '22%');
+    const fillAlpha = depth === 0 ? 0.85 : 0.7;
+
+    roundRect(ctx, x + inset, y + inset, w - inset*2, h - inset*2, r);
+    ctx.fillStyle = `hsla(${b.hue}, ${sat}, ${light}, ${fillAlpha})`;
+    ctx.fill();
+
+    // Glow border - double stroke for neon effect
+    if (depth === 0) {
+      // Outer glow
+      ctx.save();
+      ctx.shadowColor = `hsla(${b.hue}, 80%, 55%, 0.5)`;
+      ctx.shadowBlur = 8;
+      roundRect(ctx, x + inset, y + inset, w - inset*2, h - inset*2, r);
+      ctx.strokeStyle = `hsla(${b.hue}, 75%, 60%, 0.7)`;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ctx.restore();
+
+      // Inner bright line
+      roundRect(ctx, x + inset, y + inset, w - inset*2, h - inset*2, r);
+      ctx.strokeStyle = `hsla(${b.hue}, 80%, 70%, 0.9)`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    } else {
+      roundRect(ctx, x + inset, y + inset, w - inset*2, h - inset*2, r);
+      ctx.strokeStyle = `hsla(${b.hue}, 60%, 50%, 0.35)`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    }
+
+    // Label in bright capsule
+    if (b.label && w > 60 && h > 28) {
+      const fontSize = depth === 0 ? 11 : 9;
+      ctx.font = `700 ${fontSize}px -apple-system, BlinkMacSystemFont, sans-serif`;
+      const textW = ctx.measureText(b.label).width;
+
+      const px = x + inset + 6;
+      const py = y + inset + 5;
+      const pw = Math.min(textW + 14, w - 16);
+      const ph = fontSize + 8;
+
+      // Neon capsule
+      roundRect(ctx, px, py, pw, ph, ph/2);
+      ctx.fillStyle = `hsla(${b.hue}, 70%, 15%, 0.8)`;
+      ctx.fill();
+      roundRect(ctx, px, py, pw, ph, ph/2);
+      ctx.strokeStyle = `hsla(${b.hue}, 70%, 60%, 0.6)`;
+      ctx.lineWidth = 0.75;
+      ctx.stroke();
+
+      ctx.fillStyle = `hsla(${b.hue}, 60%, 85%, 0.95)`;
+      ctx.fillText(b.label, px + 7, py + fontSize + 0.5, pw - 14);
+
+      if (b.size) {
+        ctx.font = `500 8px -apple-system, sans-serif`;
+        ctx.fillStyle = `hsla(${b.hue}, 50%, 70%, 0.6)`;
+        ctx.fillText(b.size, px + pw + 6, py + fontSize - 1, 80);
+      }
+    }
+
+    if (b.children) {
+      for (const child of b.children) {
+        drawBlock(child, depth + 1);
+      }
+    }
+  }
+
+  for (const b of mockBlocks) {
+    drawBlock(b, 0);
+  }
+}
+
+// Helper: rounded rect path
+function roundRect(ctx, x, y, w, h, r) {
+  if (w < 0 || h < 0) return;
+  r = Math.min(r, w/2, h/2);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+// Render all
+drawOptionA('canvas-a');
+drawOptionB('canvas-b');
+drawOptionC('canvas-c');
+drawOptionD('canvas-d');
+</script>
+</body>
+</html>
