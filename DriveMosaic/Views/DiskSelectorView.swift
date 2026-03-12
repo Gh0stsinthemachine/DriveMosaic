@@ -33,57 +33,69 @@ struct DiskSelectorView: View {
                 Divider()
             }
 
-            ScrollView {
-                VStack(spacing: 16) {
-                    // Volumes grid
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 280, maximum: 400))], spacing: 12) {
-                        ForEach(volumes) { volume in
-                            VolumeCard(volume: volume) {
-                                onScanVolume(volume.mountPoint)
+            ZStack {
+                // Animated mosaic background — fades from transparent at top to visible at bottom
+                MosaicBackgroundView()
+                    .mask(
+                        LinearGradient(
+                            colors: [.clear, .clear, .white.opacity(0.3), .white],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+
+                ScrollView {
+                    VStack(spacing: 16) {
+                        // Volumes grid
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 280, maximum: 400))], spacing: 12) {
+                            ForEach(volumes) { volume in
+                                VolumeCard(volume: volume) {
+                                    onScanVolume(volume.mountPoint)
+                                }
                             }
                         }
-                    }
-                    .padding(.top, 20)
+                        .padding(.top, 20)
 
-                    // Choose folder button
-                    Button(action: onChooseFolder) {
-                        Label("Choose Folder...", systemImage: "folder.badge.plus")
-                            .font(.callout)
-                    }
-                    .buttonStyle(.bordered)
-                    .padding(.top, 8)
-
-                    // License status
-                    if isPro {
-                        HStack(spacing: 4) {
-                            Image(systemName: "checkmark.seal.fill")
-                                .font(.system(size: 10))
-                                .foregroundStyle(.green)
-                            Text("DriveMosaic Pro")
-                                .font(.system(size: 11, weight: .medium))
-                                .foregroundStyle(.green.opacity(0.8))
+                        // Choose folder button
+                        Button(action: onChooseFolder) {
+                            Label("Choose Folder...", systemImage: "folder.badge.plus")
+                                .font(.callout)
                         }
-                        .padding(.top, 4)
-                        .padding(.bottom, 20)
-                    } else {
-                        Button {
-                            onUpgrade()
-                        } label: {
+                        .buttonStyle(.bordered)
+                        .padding(.top, 8)
+
+                        // License status
+                        if isPro {
                             HStack(spacing: 4) {
-                                Text("DriveMosaic Free")
+                                Image(systemName: "checkmark.seal.fill")
+                                    .font(.system(size: 10))
+                                    .foregroundStyle(.green)
+                                Text("DriveMosaic Pro")
                                     .font(.system(size: 11, weight: .medium))
-                                    .foregroundStyle(.secondary)
-                                Text("Upgrade to Pro")
-                                    .font(.system(size: 11, weight: .medium))
-                                    .foregroundStyle(.purple)
+                                    .foregroundStyle(.green.opacity(0.8))
                             }
+                            .padding(.top, 4)
+                            .padding(.bottom, 20)
+                        } else {
+                            Button {
+                                onUpgrade()
+                            } label: {
+                                HStack(spacing: 4) {
+                                    Text("DriveMosaic Free")
+                                        .font(.system(size: 11, weight: .medium))
+                                        .foregroundStyle(.secondary)
+                                    Text("Upgrade to Pro")
+                                        .font(.system(size: 11, weight: .medium))
+                                        .foregroundStyle(.purple)
+                                }
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.top, 4)
+                            .padding(.bottom, 20)
                         }
-                        .buttonStyle(.plain)
-                        .padding(.top, 4)
-                        .padding(.bottom, 20)
                     }
+                    .padding(.horizontal, 24)
                 }
-                .padding(.horizontal, 24)
             }
         }
         .onAppear {

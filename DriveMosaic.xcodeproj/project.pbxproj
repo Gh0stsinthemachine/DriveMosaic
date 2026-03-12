@@ -31,6 +31,7 @@
 		4B0001000000000000000016 /* TreemapCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000018 /* TreemapCanvasView.swift */; };
 		4B0001000000000000000017 /* LicenseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001000000000000000019 /* LicenseManager.swift */; };
 		4B0001000000000000000018 /* ProUpgradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A000100000000000000001A /* ProUpgradeView.swift */; };
+		4B0001000000000000000019 /* MosaicBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A000100000000000000001B /* MosaicBackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		4A0001000000000000000018 /* TreemapCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreemapCanvasView.swift; sourceTree = "<group>"; };
 		4A0001000000000000000019 /* LicenseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseManager.swift; sourceTree = "<group>"; };
 		4A000100000000000000001A /* ProUpgradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProUpgradeView.swift; sourceTree = "<group>"; };
+		4A000100000000000000001B /* MosaicBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicBackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				4A0001000000000000000015 /* DiskSelectorView.swift */,
 				4A0001000000000000000016 /* CollectorView.swift */,
 				4A000100000000000000001A /* ProUpgradeView.swift */,
+				4A000100000000000000001B /* MosaicBackgroundView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				4B0001000000000000000016 /* TreemapCanvasView.swift in Sources */,
 				4B0001000000000000000017 /* LicenseManager.swift in Sources */,
 				4B0001000000000000000018 /* ProUpgradeView.swift in Sources */,
+				4B0001000000000000000019 /* MosaicBackgroundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
