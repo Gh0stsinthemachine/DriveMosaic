@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DriveMosaic — See What's Eating Your Disk</title>
-    <meta name="description" content="A fast, beautiful disk space analyzer for macOS. Visualize storage usage instantly. Free to scan, $4.99 to clean up.">
+    <meta name="description" content="A fast, beautiful disk space analyzer for macOS. Visualize storage usage instantly with a stunning treemap. Free to scan, $4.99 to clean up.">
     <meta property="og:title" content="DriveMosaic — See What's Eating Your Disk">
     <meta property="og:description" content="A fast, beautiful disk space analyzer for macOS. Visualize storage usage instantly.">
     <meta property="og:image" content="https://drivemosaic.app/og-image.png">
@@ -12,10 +12,29 @@
     <meta property="og:url" content="https://drivemosaic.app">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Animated mosaic background -->
+    <div class="mosaic-bg" aria-hidden="true">
+        <div class="mosaic-block mb-1"></div>
+        <div class="mosaic-block mb-2"></div>
+        <div class="mosaic-block mb-3"></div>
+        <div class="mosaic-block mb-4"></div>
+        <div class="mosaic-block mb-5"></div>
+        <div class="mosaic-block mb-6"></div>
+        <div class="mosaic-block mb-7"></div>
+        <div class="mosaic-block mb-8"></div>
+        <div class="mosaic-block mb-9"></div>
+        <div class="mosaic-block mb-10"></div>
+        <div class="mosaic-block mb-11"></div>
+        <div class="mosaic-block mb-12"></div>
+        <div class="mosaic-block mb-13"></div>
+        <div class="mosaic-block mb-14"></div>
+        <div class="mosaic-block mb-15"></div>
+    </div>
 
     <!-- Nav -->
     <nav>
@@ -28,7 +47,7 @@
                 <a href="#features">Features</a>
                 <a href="#pricing">Pricing</a>
                 <a href="https://github.com/Gh0stsinthemachine/DaisyDiskRepl" target="_blank">GitHub</a>
-                <a href="#download" class="btn btn-sm">Download Free</a>
+                <a href="#download" class="btn btn-sm btn-primary">Download Free</a>
             </div>
         </div>
     </nav>
@@ -36,58 +55,203 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-inner">
-            <div class="hero-badge">macOS 14+ &middot; Free to use &middot; Open source</div>
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                macOS 14+ &middot; Free to use &middot; Open source
+            </div>
             <h1>See what's eating<br>your disk.</h1>
-            <p class="hero-sub">DriveMosaic scans your drives and paints a treemap of every file and folder. Instantly spot the space hogs. Clean up in one click with Pro.</p>
+            <p class="hero-sub">DriveMosaic scans your drives and paints a treemap of every file and folder.<br>Instantly spot the space hogs. Clean up in one click with Pro.</p>
             <div class="hero-cta">
-                <a href="#download" class="btn btn-lg btn-primary">Download for Mac</a>
+                <a href="#download" class="btn btn-lg btn-primary btn-glow">
+                    <span class="btn-icon">&#11015;</span>
+                    Download for Mac
+                </a>
                 <a href="#pricing" class="btn btn-lg btn-ghost">View Pricing</a>
             </div>
-            <div class="hero-meta">Free forever to scan &middot; No account required &middot; No telemetry</div>
+            <div class="hero-meta">
+                <span>Free forever to scan</span>
+                <span class="meta-sep">&middot;</span>
+                <span>No account required</span>
+                <span class="meta-sep">&middot;</span>
+                <span>No telemetry</span>
+            </div>
         </div>
 
-        <!-- App screenshot -->
-        <div class="hero-screenshot">
-            <img src="screenshot.png" alt="DriveMosaic treemap visualization showing disk usage" class="app-screenshot">
+        <!-- App screenshot in macOS frame -->
+        <div class="hero-screenshot fade-in-up">
+            <div class="window-frame">
+                <div class="window-titlebar">
+                    <div class="window-dots">
+                        <span class="dot-red"></span>
+                        <span class="dot-yellow"></span>
+                        <span class="dot-green"></span>
+                    </div>
+                    <span class="window-title">DriveMosaic</span>
+                </div>
+                <img src="screenshot.png" alt="DriveMosaic treemap visualization showing disk usage" class="app-screenshot">
+            </div>
+        </div>
+    </section>
+
+    <!-- Social proof bar -->
+    <section class="social-proof">
+        <div class="proof-inner">
+            <div class="proof-item">
+                <div class="proof-number">500 KB</div>
+                <div class="proof-label">Lightweight install</div>
+            </div>
+            <div class="proof-divider"></div>
+            <div class="proof-item">
+                <div class="proof-number">100K+</div>
+                <div class="proof-label">Files scanned per second</div>
+            </div>
+            <div class="proof-divider"></div>
+            <div class="proof-item">
+                <div class="proof-number">$4.99</div>
+                <div class="proof-label">One-time Pro upgrade</div>
+            </div>
+            <div class="proof-divider"></div>
+            <div class="proof-item">
+                <div class="proof-number">0</div>
+                <div class="proof-label">Telemetry &amp; tracking</div>
+            </div>
         </div>
     </section>
 
     <!-- Features -->
     <section id="features" class="features">
         <div class="section-inner">
-            <h2>Built for people who care about their disk.</h2>
-            <p class="section-sub">Not another bloated utility. DriveMosaic is fast, focused, and stays out of your way.</p>
+            <div class="section-header fade-in-up">
+                <div class="section-tag">Features</div>
+                <h2>Built for people who care<br>about their disk.</h2>
+                <p class="section-sub">Not another bloated utility. DriveMosaic is fast, focused, and stays out of your way.</p>
+            </div>
 
             <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(99, 102, 241, 0.15); color: #818cf8;">&#9638;</div>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon" style="background: rgba(99, 102, 241, 0.12); color: #818cf8;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                    </div>
                     <h3>Treemap Visualization</h3>
                     <p>Every file and folder rendered as proportional blocks. Big files jump out. No hunting through Finder.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">&#9889;</div>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon" style="background: rgba(16, 185, 129, 0.12); color: #34d399;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
                     <h3>Fast Scanning</h3>
-                    <p>Built on BSD's fts API &mdash; the same low-level interface professional disk utilities use. Scans hundreds of thousands of files per second.</p>
+                    <p>Built on BSD's fts API &mdash; the same low-level interface professional disk utilities use. Hundreds of thousands of files per second.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(251, 146, 60, 0.15); color: #fb923c;">&#8984;</div>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon" style="background: rgba(251, 146, 60, 0.12); color: #fb923c;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h5l3-9 4 18 3-9h5"/></svg>
+                    </div>
                     <h3>Drill-Down Navigation</h3>
                     <p>Click into any folder. Breadcrumb bar tracks your path. CMD+Click to reveal in Finder. Escape to go back.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(244, 63, 94, 0.15); color: #fb7185;">&#128465;</div>
-                    <h3>Drag-to-Delete</h3>
-                    <p>Drag space hogs to the collector. Review what you're removing. One click to trash. Auto-rescan confirms the cleanup. <span class="pro-tag">Pro</span></p>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon" style="background: rgba(244, 63, 94, 0.12); color: #fb7185;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                    </div>
+                    <h3>Drag-to-Delete <span class="pro-tag">Pro</span></h3>
+                    <p>Drag space hogs to the collector. Review what you're removing. One click to trash. Auto-rescan confirms the cleanup.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(139, 92, 246, 0.15); color: #a78bfa;">&#128274;</div>
-                    <h3>No Sandbox</h3>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon" style="background: rgba(139, 92, 246, 0.12); color: #a78bfa;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>No Sandbox Limits</h3>
                     <p>Distributed outside the App Store so it can actually scan your full disk. Grant Full Disk Access and see everything.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(45, 212, 191, 0.15); color: #2dd4bf;">&#128200;</div>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon" style="background: rgba(45, 212, 191, 0.12); color: #2dd4bf;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
                     <h3>Real-Time Progress</h3>
                     <p>Live scan counter, elapsed time, and scan rate. You always know what's happening &mdash; no staring at a spinner.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works">
+        <div class="section-inner">
+            <div class="section-header fade-in-up">
+                <div class="section-tag">How It Works</div>
+                <h2>Three steps. Ten seconds.</h2>
+            </div>
+            <div class="steps-row">
+                <div class="step-card fade-in-up">
+                    <div class="step-num">1</div>
+                    <h3>Scan</h3>
+                    <p>Select any drive or folder. DriveMosaic maps your entire file tree in seconds.</p>
+                </div>
+                <div class="step-arrow fade-in-up">&#10132;</div>
+                <div class="step-card fade-in-up">
+                    <div class="step-num">2</div>
+                    <h3>See</h3>
+                    <p>Explore the treemap. Big blocks = big files. Drill into folders. Hover for details.</p>
+                </div>
+                <div class="step-arrow fade-in-up">&#10132;</div>
+                <div class="step-card fade-in-up">
+                    <div class="step-num">3</div>
+                    <h3>Clean</h3>
+                    <p>Drag space hogs to the collector and delete. Watch your free space grow in real time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="comparison">
+        <div class="section-inner">
+            <div class="section-header fade-in-up">
+                <div class="section-tag">Why DriveMosaic</div>
+                <h2>Half the price. Zero the bloat.</h2>
+            </div>
+            <div class="compare-table fade-in-up">
+                <div class="compare-row compare-header">
+                    <div class="compare-cell"></div>
+                    <div class="compare-cell">DriveMosaic</div>
+                    <div class="compare-cell">DaisyDisk</div>
+                    <div class="compare-cell">CleanMyMac</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-cell compare-label">Price</div>
+                    <div class="compare-cell highlight">$4.99 once</div>
+                    <div class="compare-cell">$9.99</div>
+                    <div class="compare-cell">$40/year</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-cell compare-label">Free tier</div>
+                    <div class="compare-cell highlight">Full scan + visualize</div>
+                    <div class="compare-cell">None</div>
+                    <div class="compare-cell">Limited</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-cell compare-label">Subscription</div>
+                    <div class="compare-cell highlight">Never</div>
+                    <div class="compare-cell">No</div>
+                    <div class="compare-cell">Required</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-cell compare-label">Open source</div>
+                    <div class="compare-cell highlight">Yes</div>
+                    <div class="compare-cell">No</div>
+                    <div class="compare-cell">No</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-cell compare-label">Telemetry</div>
+                    <div class="compare-cell highlight">None</div>
+                    <div class="compare-cell">Unknown</div>
+                    <div class="compare-cell">Yes</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-cell compare-label">App size</div>
+                    <div class="compare-cell highlight">&lt; 1 MB</div>
+                    <div class="compare-cell">~25 MB</div>
+                    <div class="compare-cell">~75 MB</div>
                 </div>
             </div>
         </div>
@@ -96,10 +260,13 @@
     <!-- Pricing -->
     <section id="pricing" class="pricing">
         <div class="section-inner">
-            <h2>Simple pricing. No subscriptions.</h2>
-            <p class="section-sub">Scan and visualize for free, forever. Upgrade once for cleanup tools.</p>
+            <div class="section-header fade-in-up">
+                <div class="section-tag">Pricing</div>
+                <h2>Simple pricing. No subscriptions.</h2>
+                <p class="section-sub">Scan and visualize for free, forever. Upgrade once for cleanup tools.</p>
+            </div>
 
-            <div class="pricing-grid">
+            <div class="pricing-grid fade-in-up">
                 <div class="price-card">
                     <div class="price-tier">Free</div>
                     <div class="price-amount">$0</div>
@@ -131,13 +298,9 @@
                         <li class="included">Priority support</li>
                         <li class="included">All future Pro features</li>
                     </ul>
-                    <a href="https://blackcloud.lemonsqueezy.com/checkout/buy/66fde7fe-0a10-4c9b-af49-1defcf4cc8a6" id="buy-pro-btn" class="btn btn-primary">Buy Pro &mdash; $4.99</a>
+                    <a href="https://blackcloud.lemonsqueezy.com/checkout/buy/66fde7fe-0a10-4c9b-af49-1defcf4cc8a6" id="buy-pro-btn" class="btn btn-primary btn-glow">Buy Pro &mdash; $4.99</a>
                     <div class="price-note">License key delivered instantly. Activate in-app.</div>
                 </div>
-            </div>
-
-            <div class="competitor-note">
-                DaisyDisk charges $9.99. CleanMyMac is $40/year. DriveMosaic Pro is <strong>$4.99 once</strong>.
             </div>
         </div>
     </section>
@@ -145,30 +308,41 @@
     <!-- Download -->
     <section id="download" class="download">
         <div class="section-inner">
-            <h2>Get DriveMosaic</h2>
-            <p class="section-sub">Download the DMG, drag to Applications, done. Takes 10 seconds.</p>
+            <div class="section-header fade-in-up">
+                <div class="section-tag">Get Started</div>
+                <h2>Download DriveMosaic</h2>
+                <p class="section-sub">Drag to Applications. Done. Takes 10 seconds.</p>
+            </div>
 
-            <div class="download-box">
-                <div class="download-icon">&#11015;</div>
+            <div class="download-box fade-in-up">
+                <div class="download-icon-wrap">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="download-svg"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </div>
                 <div class="download-info">
                     <div class="download-name">DriveMosaic-1.0.dmg</div>
-                    <div class="download-size">~500 KB &middot; macOS 14.0+ &middot; Apple Silicon &amp; Intel</div>
+                    <div class="download-size">~645 KB &middot; macOS 14.0+ &middot; Apple Silicon &amp; Intel</div>
                 </div>
                 <a href="https://drivemosaic.app/DriveMosaic-1.0.dmg" class="btn btn-primary btn-lg">Download</a>
             </div>
 
-            <div class="install-steps">
-                <div class="step">
-                    <div class="step-num">1</div>
-                    <div class="step-text">Open the DMG and drag DriveMosaic to Applications</div>
+            <div class="install-steps fade-in-up">
+                <div class="install-step">
+                    <div class="install-num">1</div>
+                    <div class="install-text">
+                        <strong>Open the DMG</strong> and drag DriveMosaic to Applications
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-num">2</div>
-                    <div class="step-text">Right-click the app &gt; Open (first launch only, for Gatekeeper)</div>
+                <div class="install-step">
+                    <div class="install-num">2</div>
+                    <div class="install-text">
+                        <strong>Right-click &gt; Open</strong> on first launch (until we get code signing)
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-num">3</div>
-                    <div class="step-text">Grant Full Disk Access in System Settings &gt; Privacy for complete scans</div>
+                <div class="install-step">
+                    <div class="install-num">3</div>
+                    <div class="install-text">
+                        <strong>Grant Full Disk Access</strong> in System Settings &gt; Privacy for complete scans
+                    </div>
                 </div>
             </div>
         </div>
@@ -178,7 +352,10 @@
     <footer>
         <div class="footer-inner">
             <div class="footer-left">
-                <span class="logo-icon">&#9638;</span> DriveMosaic &middot; Built by <a href="https://blackcloudllc.com" target="_blank">Black Cloud LLC</a>
+                <span class="logo-icon">&#9638;</span>
+                <span>DriveMosaic</span>
+                <span class="footer-sep">&middot;</span>
+                <span>Built by <a href="https://blackcloudllc.com" target="_blank">Black Cloud LLC</a></span>
             </div>
             <div class="footer-right">
                 <a href="https://github.com/Gh0stsinthemachine/DaisyDiskRepl" target="_blank">GitHub</a>
@@ -186,6 +363,20 @@
             </div>
         </div>
     </footer>
+
+    <!-- Scroll animation observer -->
+    <script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+    </script>
 
 </body>
 </html>
