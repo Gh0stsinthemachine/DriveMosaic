@@ -45,6 +45,18 @@ struct ContentView: View {
                     }
                 )
 
+                // One-time email capture banner
+                if appState.showEmailCapture {
+                    EmailCaptureView {
+                        withAnimation(.easeInOut(duration: 0.25)) {
+                            appState.showEmailCapture = false
+                        }
+                        UserDefaults.standard.set(true, forKey: "dm_email_dismissed")
+                    }
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    .animation(.easeInOut(duration: 0.35), value: appState.showEmailCapture)
+                }
+
             } else if appState.coordinator.isScanning {
                 ScanProgressOverlay(progress: appState.coordinator.scanProgress)
             } else {
