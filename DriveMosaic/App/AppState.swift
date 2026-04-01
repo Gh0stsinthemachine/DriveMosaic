@@ -39,8 +39,8 @@ final class AppState {
     /// Whether to show the Pro upgrade sheet
     var showProUpgrade: Bool = false
 
-    /// Whether to show the email capture banner (once per user, after first scan)
-    var showEmailCapture: Bool = false
+    /// Whether to show the email gate (blocks use until submitted)
+    var showEmailGate: Bool = !UserDefaults.standard.bool(forKey: "dm_email_captured")
 
     var scanRoot: FileNode? {
         navigationStack.first ?? currentRoot
@@ -64,11 +64,6 @@ final class AppState {
             lastScanDuration = coordinator.scanDuration
             rebuildNodeLookup(from: root)
 
-            // Show email capture once — only if not already captured or dismissed
-            if !UserDefaults.standard.bool(forKey: "dm_email_captured") &&
-               !UserDefaults.standard.bool(forKey: "dm_email_dismissed") {
-                showEmailCapture = true
-            }
         }
     }
 
