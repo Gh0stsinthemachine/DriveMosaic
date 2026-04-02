@@ -86,9 +86,21 @@ struct EmailCaptureView: View {
             .disabled(email.isEmpty || state == .submitting || state == .done)
             .animation(.easeInOut(duration: 0.15), value: state == .submitting)
 
-            Text("No spam. Unsubscribe anytime.")
+            VStack(spacing: 4) {
+                Text("No spam. Unsubscribe anytime.")
+                    .font(.system(size: 10))
+                    .foregroundStyle(.tertiary)
+                Text("Your file data never leaves your Mac. We only collect your email.")
+                    .font(.system(size: 10))
+                    .foregroundStyle(.tertiary)
+                    .multilineTextAlignment(.center)
+                Button("Privacy Policy") {
+                    NSWorkspace.shared.open(URL(string: "https://drivemosaic.app/privacy.html")!)
+                }
+                .buttonStyle(.plain)
                 .font(.system(size: 10))
-                .foregroundStyle(.tertiary)
+                .foregroundStyle(.secondary)
+            }
         }
         .padding(32)
         .frame(width: 360)
